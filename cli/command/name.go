@@ -1,3 +1,5 @@
+// The code here mostly deals defining functions and logic related to the "name" parameter
+
 package command
 
 import (
