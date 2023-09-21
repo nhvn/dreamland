@@ -10,19 +10,20 @@ import (
 	"github.com/urfave/cli/v2"
 )
 
+// Function to handle the "universe" parameter and configure a CLI command
 func Universe(c *cli.Command) {
 
-	c.Flags = append(c.Flags, &flags.Universe)
+	c.Flags = append(c.Flags, &flags.Universe) // append the "universe" flag to the command's flags
 
-	if len(c.ArgsUsage) == 0 {
+	if len(c.ArgsUsage) == 0 { // if ArgsUsage is empty, log statement
 		log.Fatal("universe expected to be second argument")
 	}
 
-	c.ArgsUsage += ", universe"
+	c.ArgsUsage += ", universe" // update ArgsUsage to include "universe" as an argument
 
 	action := c.Action
 
-	c.Action = func(ctx *cli.Context) error {
+	c.Action = func(ctx *cli.Context) error { // Modifies the command's action function to handle the "universe" parameter
 		universe, err := getUniverse(ctx)
 		if err != nil {
 			return err
